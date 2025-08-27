@@ -8,6 +8,7 @@ use zellij_utils::{
     consts::{create_config_and_cache_folders, VERSION},
     data::UnblockCondition,
     envs,
+    fred,
     input::config::Config,
     logging::*,
     setup::Setup,
@@ -238,6 +239,12 @@ fn main() {
     })) = opts.command
     {
         commands::list_sessions(no_formatting, short, reverse, active);
+    } else if let Some(Command::Sessions(Sessions::PrettyPrintSession {
+        session_name,
+        no_formatting,
+    })) = &opts.command
+    {
+        fred::sessions::print_session_by_name(session_name, *no_formatting);
     } else if let Some(Command::Sessions(Sessions::ListAliases)) = opts.command {
         commands::list_aliases(opts);
     } else if let Some(Command::Sessions(Sessions::Watch { ref session_name })) = opts.command {

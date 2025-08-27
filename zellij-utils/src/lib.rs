@@ -3,6 +3,7 @@ pub mod consts;
 pub mod data;
 pub mod envs;
 pub mod errors;
+pub mod fred;
 pub mod home;
 pub mod input;
 pub mod kdl;

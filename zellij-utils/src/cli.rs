@@ -196,6 +196,14 @@ pub enum SessionCommand {
 
 #[derive(Debug, Subcommand, Clone, Serialize, Deserialize)]
 pub enum Sessions {
+    /// Pretty prints the layout used by a session name
+    PrettyPrintSession {
+        /// The name of the session to print
+        session_name: String,
+        /// Do not add colors and formatting to the list (useful for parsing)
+        #[clap(short, long)]
+        no_formatting: bool,
+    },
     /// List active sessions
     #[clap(visible_alias = "ls")]
     ListSessions {

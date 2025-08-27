@@ -6,7 +6,7 @@ use clap::Parser;
 use zellij_utils::{
     cli::{CliAction, CliArgs, Command, Sessions},
     consts::{create_config_and_cache_folders, VERSION},
-    envs,
+    envs, fred,
     input::config::Config,
     logging::*,
     setup::Setup,
@@ -186,6 +186,12 @@ fn main() {
     })) = opts.command
     {
         commands::list_sessions(no_formatting, short, reverse, active);
+    } else if let Some(Command::Sessions(Sessions::PrettyPrintSession {
+        session_name,
+        no_formatting,
+    })) = &opts.command
+    {
+        fred::sessions::print_session_by_name(session_name, *no_formatting);
     } else if let Some(Command::Sessions(Sessions::ListAliases)) = opts.command {
         commands::list_aliases(opts);
     } else if let Some(Command::Sessions(Sessions::KillAllSessions { yes })) = opts.command {

@@ -4,6 +4,7 @@ pub mod consts;
 pub mod data;
 pub mod envs;
 pub mod errors;
+pub mod fred;
 pub mod home;
 #[cfg(not(windows))]
 mod home_unix;

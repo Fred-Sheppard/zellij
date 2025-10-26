@@ -182,9 +182,10 @@ fn main() {
         no_formatting,
         short,
         reverse,
+        active,
     })) = opts.command
     {
-        commands::list_sessions(no_formatting, short, reverse);
+        commands::list_sessions(no_formatting, short, reverse, active);
     } else if let Some(Command::Sessions(Sessions::ListAliases)) = opts.command {
         commands::list_aliases(opts);
     } else if let Some(Command::Sessions(Sessions::KillAllSessions { yes })) = opts.command {

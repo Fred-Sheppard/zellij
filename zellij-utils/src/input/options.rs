@@ -96,6 +96,7 @@ impl PaneFrameStyle {
         }
         match options.pane_frame_style {
             Some(PaneFrameStyle::Full) => PaneFrameStyle::Full,
+            Some(PaneFrameStyle::None) => PaneFrameStyle::None,
             _ => PaneFrameStyle::Titles,
         }
     }
